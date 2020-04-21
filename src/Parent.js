@@ -7,15 +7,23 @@ class Parent extends Component {
   constructor() {
     super()
     this.state = {
-      color: getRandomColor()
+      color: getRandomColor(),
+      childrenColour: '#FFF'
     }
+  }
+
+  changeColour = (newChildColour) => {
+    this.setState({
+      color: getRandomColor(),
+      childrenColour: newChildColour
+    })
   }
 
   render() {
     return (
       <div className="parent" style={{backgroundColor: this.state.color}}>
-        <Child />
-        <Child />
+        <Child colour={this.state.childrenColour} handleColourChange={this.changeColour}/>
+        <Child colour={this.state.childrenColour} handleColourChange={this.changeColour}/>
       </div>
     )
   }
